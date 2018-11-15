@@ -4,11 +4,8 @@ module.exports = {
   platform: 'default',
 
   // ip to be used by the AP
-  ap_ip: '192.168.220.1',
-  startGateway: 'systemctl start mozilla-iot-gateway',
-  stopGateway: 'systemctl stop mozilla-iot-gateway',
-  restartGateway: 'systemctl restart mozilla-iot-gateway',
-  stopWifiService: 'systemctl stop mozilla-gateway-wifi-setup',
+  ap_ip: '172.16.127.1',
+  stopWifiService: '/etc/init.d/S89mycroft_wifisetup stop',
 
   // A shell command that outputs the string "COMPLETED" if we are
   // connected to a wifi network and outputs something else otherwise
@@ -36,12 +33,12 @@ module.exports = {
   // we do on Raspbian systems
   startAP:
     // eslint-disable-next-line
-    'ifconfig wlan0 $IP; systemctl start hostapd; systemctl start dnsmasq',
+    'ifconfig wlan0 $IP; hostapd -B /etc/hostapd/hostapd.conf &; dnsmasq &',
 
   // Stop broadcasting an AP and attempt to reconnect to local wifi
   stopAP:
     // eslint-disable-next-line
-    'systemctl stop hostapd; systemctl stop dnsmasq; ifconfig wlan0 0.0.0.0',
+    'killall hostapd; killall dnsmasq; ifconfig wlan0 0.0.0.0',
 
   // Remove an existing network. Expects the network ID in the environment
   // variable ID.

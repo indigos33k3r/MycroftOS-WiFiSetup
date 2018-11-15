@@ -276,13 +276,13 @@
         }
       }
     </script>
-    <title>Mozilla Gateway</title>
+    <title>MycroftOS-WiFiSetup</title>
   </head>
   <body>
     <form action="/connecting" method="post" id="mainform">
       <div id="step1">
         <div id="maindiv">
-          <h1>Welcome</h1>
+          <h1>Welcome to MycroftOS-WiFiSetup</h1>
           <h3>Connect to a WiFi network?</h3><br>
           {{#networks}}
             <button onclick="window.selectssid(event, '{{{escapeQuotes ssid}}}', {{pwdRequired}})" id="item"

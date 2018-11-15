@@ -1,7 +1,7 @@
 {
-  "name": "gateway-wifi-setup",
+  "name": "MycroftOS-WiFiSetup",
   "version": "0.0.1",
-  "description": "get an IoT device online by first broadcasting a private wifi network that users can connect to to configure your device",
+  "description": "Get a MycroftOS device online by first broadcasting a private wifi network that users can connect to to configure your device",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mozilla-iot/gateway-wifi-setup.git"
+    "url": "git+https://github.com/j1nx/MycroftOS-WiFiSetup.git"
   },
-  "author": "David Flanagan & Andre Natal",
+  "author": "David Flanagan & Andre Natal. Adjusted by Peter Steenbergen - j1nx.nl",
   "license": "MPL-2.0",
   "bugs": {
-    "url": "https://github.com/mozilla-iot/gateway-wifi-setup/issues"
+    "url": "https://github.com/j1nx/MycroftOS-WiFiSetup/issues"
   },
-  "homepage": "https://github.com/mozilla-iot/gateway-wifi-setup#readme",
+  "homepage": "https://github.com/j1nx/MycroftOS-WiFiSetup#readme",
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.14.0",

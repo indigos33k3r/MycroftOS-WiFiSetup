@@ -1,8 +1,8 @@
 #!/bin/bash
 
 run_app() {
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+  export NVM_DIR="/root/.nvm"
+  [ -s "/root/.nvm/nvm.sh" ] && \. "/root/.nvm/nvm.sh"  # This loads nvm
 
   echo "nvm version"
   nvm --version
@@ -14,7 +14,7 @@ run_app() {
   npm start
 }
 
-cd $HOME/gateway-wifi-setup
-run_app > ${HOME}/gateway-wifi-setup-app.log 2>&1
+cd /usr/lib/node-modules/MycroftOS-WiFiSetup
+run_app > /var/log/mycroft/wifi-setup.log 2>&1
 
 

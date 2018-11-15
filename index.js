@@ -18,8 +18,6 @@ Handlebars.registerHelper('escapeQuotes', function(str) {
 // if the user decided to skip the wifi setup, we directly start the gateway
 // and exit
 if (fs.existsSync('wifiskip')) {
-  console.log('start the gateway');
-  startGateway();
   console.log('stop wifi setup');
   stopWifiService();
   return;
@@ -36,8 +34,6 @@ wifi.getStatus()
     // Before we start, though, let the user know that something is happening
     wifi.waitForWiFi(20, 3000)
       .then(() => {
-        console.log('start the gateway');
-        startGateway();
         console.log('stop wifi setup');
         stopWifiService();
       })
@@ -47,10 +43,7 @@ wifi.getStatus()
       });
   })
   .catch(() => {
-    console.error('Error checking wifi adapter presence. Start the gateway ' +
-                  'and then shutdown the wifi service..');
-    console.log('start the gateway');
-    startGateway();
+    console.error('Error checking wifi adapter presence...');
     console.log('stop wifi setup');
     stopWifiService();
   });
@@ -198,8 +191,6 @@ function handleConnecting(request, response) {
     wifi.stopAP()
       .then(() => wifi.broadcastBeacon())
       .then(() => {
-        console.log('skip wifi setup. start the gateway');
-        startGateway();
         console.log('stop wifi setup');
         stopWifiService();
       });
@@ -243,20 +234,12 @@ function handleConnecting(request, response) {
     .then(() => wifi.waitForWiFi(20, 3000))
     .then(() => wifi.broadcastBeacon())
     .then(() => {
-      console.log('start the gateway');
-      startGateway();
       console.log('stop wifi setup');
       stopWifiService();
     })
     .catch((error) => {
       console.log('General Error:', error);
     });
-}
-
-function startGateway() {
-  return run(platform.startGateway)
-    .then((out) => console.log('Gateway started', out))
-    .catch((err) => console.error('Error starting Gateway:', err));
 }
 
 function stopWifiService() {
